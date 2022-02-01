@@ -1,8 +1,8 @@
 import * as React from "react";
 
 import {
-  SSdlierProgressBar,
-  SSdlierProgressBarItem,
+  SSliderProgressBar,
+  SSliderProgressBarItem,
   SSlide,
   SSlideImage,
   SSlider,
@@ -20,9 +20,10 @@ type Slide = {
 
 interface ISlider {
   slides: Slide[];
+  children?: React.ReactNode;
 }
 
-export const Slider: React.FC<ISlider> = ({ slides }) => {
+export const Slider: React.FC<ISlider> = ({ slides, children }) => {
   const [cur, setCur] = React.useState(0);
 
   setTimeout(() => {
@@ -36,17 +37,11 @@ export const Slider: React.FC<ISlider> = ({ slides }) => {
       setCur(cur + 1);
     }
   };
-  const prevMoving = () => {
-    if (cur <= 0) {
-      setCur(slides.length - 1);
-    } else {
-      setCur(cur - 1);
-    }
-  };
 
   return (
     <SSlider>
-      {!slides || slides.length === 0 ? null : (
+      {children}
+      {slides?.length && (
         <>
           {slides.map((slide, idx) => (
             <SSlide active={idx === cur} key={idx}>
@@ -61,17 +56,17 @@ export const Slider: React.FC<ISlider> = ({ slides }) => {
           <h3>project</h3>
           <h5>2019</h5>
         </SSliderControlsDetails>
-        <SSdlierProgressBar>
+        <SSliderProgressBar>
           {slides.map((slide, idx) => (
-            <SSdlierProgressBarItem
+            <SSliderProgressBarItem
               key={slide.title}
               active={idx === cur}
               filled={idx <= cur}
             >
               <div />
-            </SSdlierProgressBarItem>
+            </SSliderProgressBarItem>
           ))}
-        </SSdlierProgressBar>
+        </SSliderProgressBar>
       </SSliderControls>
     </SSlider>
   );

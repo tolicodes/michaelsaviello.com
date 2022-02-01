@@ -91,7 +91,7 @@ export const SSliderControls = styled.div`
   }
 `;
 
-export const SSdlierProgressBar = styled.div`
+export const SSliderProgressBar = styled.div`
   display: flex;
 
   position: absolute;
@@ -103,7 +103,7 @@ export const SSdlierProgressBar = styled.div`
   border-top: 1px solid black;
 `;
 
-export const SSdlierProgressBarItem = styled.div<IActiveItem>`
+export const SSliderProgressBarItem = styled.div<IActiveItem>`
   height: 17px;
   width: 33.33%;
 
